@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-<canvas width="400" height="400" id="game"></canvas>
+<canvas id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -30,6 +30,13 @@ var context = canvas.getContext('2d');
 // (e.g. 16 * 25 = 400)
 var grid = 16;
 var count = 0;
+function resizeCanvas() {
+  canvas.width = Math.floor(window.innerWidth / grid) * grid;
+  canvas.height = Math.floor(window.innerHeight / grid) * grid;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
 
 var snake = {
   x: 160,
